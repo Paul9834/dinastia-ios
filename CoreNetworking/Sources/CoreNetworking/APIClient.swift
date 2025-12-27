@@ -70,4 +70,20 @@ public final class APIClient {
 
         return request
     }
+    
+    public func request<Response: Decodable, Body: Encodable>(
+        _ endpoint: Endpoint,
+        body: Body,
+        as type: Response.Type = Response.self
+    ) async throws -> Response {
+        let data = try jsonBody(body)
+        let endpointWithBody = Endpoint(
+            path: endpoint.path,
+            method: endpoint.method,
+            queryItems: endpoint.queryItems,
+            headers: endpoint.headers.merging(["Content-Type": "application/json"]) { current, _ in current },
+            body: data
+        )
+        return try await send(endpointWithBody, as: type)
+    }
 }
