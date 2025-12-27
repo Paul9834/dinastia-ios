@@ -20,9 +20,23 @@
 		A0BF93B82EFE17D500A17360 /* dinastia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dinastia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A04B56742F009298005AB848 /* Exceptions for "dinastia" folder in "dinastia" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+				Untitled.swift,
+			);
+			target = A0BF93B72EFE17D500A17360 /* dinastia */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A0BF93BA2EFE17D500A17360 /* dinastia */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A04B56742F009298005AB848 /* Exceptions for "dinastia" folder in "dinastia" target */,
+			);
 			path = dinastia;
 			sourceTree = "<group>";
 		};
@@ -295,6 +309,7 @@
 				DEVELOPMENT_TEAM = RC4YJ9527W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dinastia/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -328,6 +343,7 @@
 				DEVELOPMENT_TEAM = RC4YJ9527W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dinastia/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

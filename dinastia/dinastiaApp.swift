@@ -1,17 +1,16 @@
-//
-//  dinastiaApp.swift
-//  dinastia
-//
-//  Created by Paul Montealegre on 25/12/2025.
-//
-
 import SwiftUI
-import CoreNetworking
+
 @main
 struct dinastiaApp: App {
+    @State private var didFinishSplash = false
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if didFinishSplash {
+                RootView()
+            } else {
+                SplashView(didFinish: $didFinishSplash)
+            }
         }
     }
 }
