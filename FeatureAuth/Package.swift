@@ -5,19 +5,32 @@ import PackageDescription
 
 let package = Package(
     name: "FeatureAuth",
+    platforms: [
+        .iOS(.v17)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "FeatureAuth",
             targets: ["FeatureAuth"]
-        ),
+        )
+    ],
+    dependencies: [
+        .package(path: "../CoreModels"),
+        .package(path: "../CoreFoundationKit"),
+        .package(path: "../CoreNetworking"),
+        .package(path: "../CorePersistence"),
+        .package(path: "../DesignSystem")
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "FeatureAuth"
-        ),
-
+            name: "FeatureAuth",
+            dependencies: [
+                .product(name: "CoreModels", package: "CoreModels"),
+                .product(name: "CoreFoundationKit", package: "CoreFoundationKit"),
+                .product(name: "CoreNetworking", package: "CoreNetworking"),
+                .product(name: "CorePersistence", package: "CorePersistence"),
+                .product(name: "DesignSystem", package: "DesignSystem")
+            ]
+        )
     ]
 )

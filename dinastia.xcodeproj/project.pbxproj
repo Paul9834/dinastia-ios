@@ -12,6 +12,7 @@
 		A067E52A2F0086A60057A742 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A067E5292F0086A60057A742 /* CoreFoundationKit */; };
 		A067E52D2F0086B00057A742 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A067E52C2F0086B00057A742 /* DesignSystem */; };
 		A067E5302F0086C00057A742 /* AppContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A067E52F2F0086C00057A742 /* AppContainer */; };
+		A0DAD7E12F008A2600E13B1D /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A0DAD7E02F008A2600E13B1D /* FeatureAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A067E52D2F0086B00057A742 /* DesignSystem in Frameworks */,
+				A0DAD7E12F008A2600E13B1D /* FeatureAuth in Frameworks */,
 				A067E52A2F0086A60057A742 /* CoreFoundationKit in Frameworks */,
 				A067E5242F00868F0057A742 /* CoreNetworking in Frameworks */,
 				A067E5302F0086C00057A742 /* AppContainer in Frameworks */,
@@ -93,6 +95,7 @@
 				A067E5292F0086A60057A742 /* CoreFoundationKit */,
 				A067E52C2F0086B00057A742 /* DesignSystem */,
 				A067E52F2F0086C00057A742 /* AppContainer */,
+				A0DAD7E02F008A2600E13B1D /* FeatureAuth */,
 			);
 			productName = dinastia;
 			productReference = A0BF93B82EFE17D500A17360 /* dinastia.app */;
@@ -128,6 +131,7 @@
 				A067E5282F0086A60057A742 /* XCLocalSwiftPackageReference "CoreFoundationKit" */,
 				A067E52B2F0086B00057A742 /* XCLocalSwiftPackageReference "DesignSystem" */,
 				A067E52E2F0086C00057A742 /* XCLocalSwiftPackageReference "AppContainer" */,
+				A0DAD7DF2F008A2600E13B1D /* XCLocalSwiftPackageReference "FeatureAuth" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A0BF93B92EFE17D500A17360 /* Products */;
@@ -391,6 +395,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = AppContainer;
 		};
+		A0DAD7DF2F008A2600E13B1D /* XCLocalSwiftPackageReference "FeatureAuth" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = FeatureAuth;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -413,6 +421,10 @@
 		A067E52F2F0086C00057A742 /* AppContainer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppContainer;
+		};
+		A0DAD7E02F008A2600E13B1D /* FeatureAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
