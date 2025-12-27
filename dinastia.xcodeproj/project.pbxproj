@@ -6,7 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A067E5242F00868F0057A742 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A067E5232F00868F0057A742 /* CoreNetworking */; };
+		A067E5272F00869D0057A742 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A067E5262F00869D0057A742 /* CorePersistence */; };
+		A067E52A2F0086A60057A742 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A067E5292F0086A60057A742 /* CoreFoundationKit */; };
+		A067E52D2F0086B00057A742 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A067E52C2F0086B00057A742 /* DesignSystem */; };
+		A067E5302F0086C00057A742 /* AppContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A067E52F2F0086C00057A742 /* AppContainer */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		A018E6EC2F00853E00B33B2D /* CoreModels */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreModels; sourceTree = "<group>"; };
 		A0BF93B82EFE17D500A17360 /* dinastia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dinastia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -23,16 +32,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A067E52D2F0086B00057A742 /* DesignSystem in Frameworks */,
+				A067E52A2F0086A60057A742 /* CoreFoundationKit in Frameworks */,
+				A067E5242F00868F0057A742 /* CoreNetworking in Frameworks */,
+				A067E5302F0086C00057A742 /* AppContainer in Frameworks */,
+				A067E5272F00869D0057A742 /* CorePersistence in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A018E6EB2F00853E00B33B2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A018E6EC2F00853E00B33B2D /* CoreModels */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A0BF93AF2EFE17D500A17360 = {
 			isa = PBXGroup;
 			children = (
 				A0BF93BA2EFE17D500A17360 /* dinastia */,
+				A018E6EB2F00853E00B33B2D /* Frameworks */,
 				A0BF93B92EFE17D500A17360 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +88,11 @@
 			);
 			name = dinastia;
 			packageProductDependencies = (
+				A067E5232F00868F0057A742 /* CoreNetworking */,
+				A067E5262F00869D0057A742 /* CorePersistence */,
+				A067E5292F0086A60057A742 /* CoreFoundationKit */,
+				A067E52C2F0086B00057A742 /* DesignSystem */,
+				A067E52F2F0086C00057A742 /* AppContainer */,
 			);
 			productName = dinastia;
 			productReference = A0BF93B82EFE17D500A17360 /* dinastia.app */;
@@ -94,6 +122,13 @@
 			);
 			mainGroup = A0BF93AF2EFE17D500A17360;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A067E5222F00868F0057A742 /* XCLocalSwiftPackageReference "CoreNetworking" */,
+				A067E5252F00869D0057A742 /* XCLocalSwiftPackageReference "CorePersistence" */,
+				A067E5282F0086A60057A742 /* XCLocalSwiftPackageReference "CoreFoundationKit" */,
+				A067E52B2F0086B00057A742 /* XCLocalSwiftPackageReference "DesignSystem" */,
+				A067E52E2F0086C00057A742 /* XCLocalSwiftPackageReference "AppContainer" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A0BF93B92EFE17D500A17360 /* Products */;
 			projectDirPath = "";
@@ -256,6 +291,7 @@
 				DEVELOPMENT_TEAM = RC4YJ9527W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,6 +324,7 @@
 				DEVELOPMENT_TEAM = RC4YJ9527W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -332,6 +369,52 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A067E5222F00868F0057A742 /* XCLocalSwiftPackageReference "CoreNetworking" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = CoreNetworking;
+		};
+		A067E5252F00869D0057A742 /* XCLocalSwiftPackageReference "CorePersistence" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = CorePersistence;
+		};
+		A067E5282F0086A60057A742 /* XCLocalSwiftPackageReference "CoreFoundationKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = CoreFoundationKit;
+		};
+		A067E52B2F0086B00057A742 /* XCLocalSwiftPackageReference "DesignSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = DesignSystem;
+		};
+		A067E52E2F0086C00057A742 /* XCLocalSwiftPackageReference "AppContainer" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = AppContainer;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A067E5232F00868F0057A742 /* CoreNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreNetworking;
+		};
+		A067E5262F00869D0057A742 /* CorePersistence */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CorePersistence;
+		};
+		A067E5292F0086A60057A742 /* CoreFoundationKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreFoundationKit;
+		};
+		A067E52C2F0086B00057A742 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		A067E52F2F0086C00057A742 /* AppContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppContainer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A0BF93B02EFE17D500A17360 /* Project object */;
 }

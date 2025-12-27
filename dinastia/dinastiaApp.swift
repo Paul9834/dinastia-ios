@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import CoreNetworking
 @main
 struct dinastiaApp: App {
     var body: some Scene {
