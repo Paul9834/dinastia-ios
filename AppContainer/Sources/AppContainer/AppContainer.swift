@@ -1,6 +1,6 @@
 import Foundation
 import CoreNetworking
-
+@MainActor
 public final class AppContainer {
     public static let shared = AppContainer()
 

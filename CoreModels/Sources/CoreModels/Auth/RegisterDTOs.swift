@@ -1,0 +1,35 @@
+import Foundation
+
+public struct RegisterRequest: Encodable, Sendable {
+    public let nombre: String
+    public let apellido: String
+    public let correo: String
+    public let telefono: String
+    public let contrasena: String
+
+    public init(nombre: String, apellido: String, correo: String, telefono: String, contrasena: String) {
+        self.nombre = nombre
+        self.apellido = apellido
+        self.correo = correo
+        self.telefono = telefono
+        self.contrasena = contrasena
+    }
+}
+
+public struct RegisterResponse: Decodable, Sendable {
+    public let id: Int
+    public let nombre: String
+    public let apellido: String
+    public let correo: String
+    public let telefono: String
+    public let rol: String
+
+    public init(id: Int, nombre: String, apellido: String, correo: String, telefono: String, rol: String) {
+        self.id = id
+        self.nombre = nombre
+        self.apellido = apellido
+        self.correo = correo
+        self.telefono = telefono
+        self.rol = rol
+    }
+}
