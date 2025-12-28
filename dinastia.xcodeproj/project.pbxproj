@@ -22,6 +22,13 @@
 		A0EB3D572F00B9B300E5E9A4 /* CoreModels in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D562F00B9B300E5E9A4 /* CoreModels */; };
 		A0EB3D5B2F00BA3F00E5E9A4 /* AppContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D5A2F00BA3F00E5E9A4 /* AppContainer */; };
 		A0EB3D6A2F00BA9E00E5E9A4 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D692F00BA9E00E5E9A4 /* DesignSystem */; };
+		A0FF8A2E2F01861A0000EDE0 /* AppContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A2D2F01861A0000EDE0 /* AppContainer */; };
+		A0FF8A312F0186250000EDE0 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A302F0186250000EDE0 /* CoreFoundationKit */; };
+		A0FF8A342F01862D0000EDE0 /* CoreModels in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A332F01862D0000EDE0 /* CoreModels */; };
+		A0FF8A372F0186340000EDE0 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A362F0186340000EDE0 /* DesignSystem */; };
+		A0FF8A3A2F01863F0000EDE0 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A392F01863F0000EDE0 /* CoreNetworking */; };
+		A0FF8A3D2F01864E0000EDE0 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A3C2F01864E0000EDE0 /* FeatureAuth */; };
+		A0FF8A402F01865A0000EDE0 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A3F2F01865A0000EDE0 /* CorePersistence */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,19 +62,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0FF8A2E2F01861A0000EDE0 /* AppContainer in Frameworks */,
+				A0FF8A3D2F01864E0000EDE0 /* FeatureAuth in Frameworks */,
 				A07136D22F00C7F000AA8D49 /* CoreNetworking in Frameworks */,
 				A07136D12F00C7F000AA8D49 /* FeatureAuth in Frameworks */,
 				A07136D02F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */,
+				A0FF8A402F01865A0000EDE0 /* CorePersistence in Frameworks */,
 				A07136CF2F00C7F000AA8D49 /* CorePersistence in Frameworks */,
+				A0FF8A372F0186340000EDE0 /* DesignSystem in Frameworks */,
 				A07136CE2F00C7F000AA8D49 /* CoreModels in Frameworks */,
 				A07136CD2F00C7F000AA8D49 /* CorePersistence in Frameworks */,
 				A07136CC2F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */,
 				A07136CB2F00C7F000AA8D49 /* CoreNetworking in Frameworks */,
+				A0FF8A312F0186250000EDE0 /* CoreFoundationKit in Frameworks */,
 				A07136CA2F00C7F000AA8D49 /* CorePersistence in Frameworks */,
 				A07136C92F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */,
 				A07136C82F00C7F000AA8D49 /* DesignSystem in Frameworks */,
 				A0EB3D6A2F00BA9E00E5E9A4 /* DesignSystem in Frameworks */,
+				A0FF8A3A2F01863F0000EDE0 /* CoreNetworking in Frameworks */,
 				A0EB3D3D2F00B8D800E5E9A4 /* FeatureAuth in Frameworks */,
+				A0FF8A342F01862D0000EDE0 /* CoreModels in Frameworks */,
 				A0EB3D572F00B9B300E5E9A4 /* CoreModels in Frameworks */,
 				A0EB3D5B2F00BA3F00E5E9A4 /* AppContainer in Frameworks */,
 			);
@@ -135,6 +149,13 @@
 				A0EB3D632F00BA7400E5E9A4 /* FeatureAuth */,
 				A0EB3D662F00BA9500E5E9A4 /* CoreNetworking */,
 				A0EB3D692F00BA9E00E5E9A4 /* DesignSystem */,
+				A0FF8A2D2F01861A0000EDE0 /* AppContainer */,
+				A0FF8A302F0186250000EDE0 /* CoreFoundationKit */,
+				A0FF8A332F01862D0000EDE0 /* CoreModels */,
+				A0FF8A362F0186340000EDE0 /* DesignSystem */,
+				A0FF8A392F01863F0000EDE0 /* CoreNetworking */,
+				A0FF8A3C2F01864E0000EDE0 /* FeatureAuth */,
+				A0FF8A3F2F01865A0000EDE0 /* CorePersistence */,
 			);
 			productName = dinastia;
 			productReference = A0BF93B82EFE17D500A17360 /* dinastia.app */;
@@ -165,13 +186,13 @@
 			mainGroup = A0BF93AF2EFE17D500A17360;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				A0EB3D552F00B9B300E5E9A4 /* XCLocalSwiftPackageReference "CoreModels" */,
-				A0EB3D592F00BA3F00E5E9A4 /* XCLocalSwiftPackageReference "AppContainer" */,
-				A0EB3D5C2F00BA6900E5E9A4 /* XCLocalSwiftPackageReference "CorePersistence" */,
-				A0EB3D5F2F00BA6F00E5E9A4 /* XCLocalSwiftPackageReference "CoreFoundationKit" */,
-				A0EB3D622F00BA7400E5E9A4 /* XCLocalSwiftPackageReference "FeatureAuth" */,
-				A0EB3D652F00BA9500E5E9A4 /* XCLocalSwiftPackageReference "CoreNetworking" */,
-				A0EB3D682F00BA9E00E5E9A4 /* XCLocalSwiftPackageReference "DesignSystem" */,
+				A0FF8A2C2F01861A0000EDE0 /* XCLocalSwiftPackageReference "Core/AppContainer" */,
+				A0FF8A2F2F0186240000EDE0 /* XCLocalSwiftPackageReference "Core/CoreFoundationKit" */,
+				A0FF8A322F01862D0000EDE0 /* XCLocalSwiftPackageReference "Core/CoreModels" */,
+				A0FF8A352F0186340000EDE0 /* XCLocalSwiftPackageReference "Core/DesignSystem" */,
+				A0FF8A382F01863F0000EDE0 /* XCLocalSwiftPackageReference "Core/CoreNetworking" */,
+				A0FF8A3B2F01864E0000EDE0 /* XCLocalSwiftPackageReference "Features/FeatureAuth" */,
+				A0FF8A3E2F01865A0000EDE0 /* XCLocalSwiftPackageReference "Core/CorePersistence" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A0BF93B92EFE17D500A17360 /* Products */;
@@ -419,33 +440,33 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		A0EB3D552F00B9B300E5E9A4 /* XCLocalSwiftPackageReference "CoreModels" */ = {
+		A0FF8A2C2F01861A0000EDE0 /* XCLocalSwiftPackageReference "Core/AppContainer" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = CoreModels;
+			relativePath = Core/AppContainer;
 		};
-		A0EB3D592F00BA3F00E5E9A4 /* XCLocalSwiftPackageReference "AppContainer" */ = {
+		A0FF8A2F2F0186240000EDE0 /* XCLocalSwiftPackageReference "Core/CoreFoundationKit" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = AppContainer;
+			relativePath = Core/CoreFoundationKit;
 		};
-		A0EB3D5C2F00BA6900E5E9A4 /* XCLocalSwiftPackageReference "CorePersistence" */ = {
+		A0FF8A322F01862D0000EDE0 /* XCLocalSwiftPackageReference "Core/CoreModels" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = CorePersistence;
+			relativePath = Core/CoreModels;
 		};
-		A0EB3D5F2F00BA6F00E5E9A4 /* XCLocalSwiftPackageReference "CoreFoundationKit" */ = {
+		A0FF8A352F0186340000EDE0 /* XCLocalSwiftPackageReference "Core/DesignSystem" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = CoreFoundationKit;
+			relativePath = Core/DesignSystem;
 		};
-		A0EB3D622F00BA7400E5E9A4 /* XCLocalSwiftPackageReference "FeatureAuth" */ = {
+		A0FF8A382F01863F0000EDE0 /* XCLocalSwiftPackageReference "Core/CoreNetworking" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = FeatureAuth;
+			relativePath = Core/CoreNetworking;
 		};
-		A0EB3D652F00BA9500E5E9A4 /* XCLocalSwiftPackageReference "CoreNetworking" */ = {
+		A0FF8A3B2F01864E0000EDE0 /* XCLocalSwiftPackageReference "Features/FeatureAuth" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = CoreNetworking;
+			relativePath = Features/FeatureAuth;
 		};
-		A0EB3D682F00BA9E00E5E9A4 /* XCLocalSwiftPackageReference "DesignSystem" */ = {
+		A0FF8A3E2F01865A0000EDE0 /* XCLocalSwiftPackageReference "Core/CorePersistence" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = DesignSystem;
+			relativePath = Core/CorePersistence;
 		};
 /* End XCLocalSwiftPackageReference section */
 
@@ -509,6 +530,34 @@
 		A0EB3D692F00BA9E00E5E9A4 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DesignSystem;
+		};
+		A0FF8A2D2F01861A0000EDE0 /* AppContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppContainer;
+		};
+		A0FF8A302F0186250000EDE0 /* CoreFoundationKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreFoundationKit;
+		};
+		A0FF8A332F01862D0000EDE0 /* CoreModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreModels;
+		};
+		A0FF8A362F0186340000EDE0 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		A0FF8A392F01863F0000EDE0 /* CoreNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreNetworking;
+		};
+		A0FF8A3C2F01864E0000EDE0 /* FeatureAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureAuth;
+		};
+		A0FF8A3F2F01865A0000EDE0 /* CorePersistence */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CorePersistence;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
