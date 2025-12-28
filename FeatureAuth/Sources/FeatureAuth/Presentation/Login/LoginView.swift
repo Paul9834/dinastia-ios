@@ -107,26 +107,40 @@ public struct LoginView: View {
             // // Dispara el login en async
             Task { await viewModel.loginTapped() }
         } label: {
-            ZStack {
-                Text("INGRESAR")
-                    .font(.system(size: 18, weight: .bold))
-                    .opacity(viewModel.isLoading ? 0 : 1)
+            // // HStack para asegurar ancho completo y área tocable grande
+            HStack {
+                Spacer()
 
-                if viewModel.isLoading {
-                    ProgressView().tint(.white)
+                ZStack {
+                    // // Texto del botón
+                    Text("INGRESAR")
+                        .font(.system(size: 18, weight: .bold))
+                        .opacity(viewModel.isLoading ? 0 : 1)
+
+                    // // Loader encima cuando está cargando
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .tint(.white)
+                    }
                 }
+
+                Spacer()
             }
-            .frame(maxWidth: .infinity)
             .padding(.vertical, 18)
+            .frame(maxWidth: .infinity)
+            // // Define la forma tocable (hitbox) del botón
+            .contentShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+            // // Estilo visual del botón (adentro del label para que sea tocable)
+            .background(brandGreen)
+            .foregroundStyle(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+            .shadow(color: brandGreen.opacity(0.25), radius: 18, x: 0, y: 10)
         }
         .buttonStyle(.plain)
-        .background(brandGreen)
-        .foregroundStyle(.white)
-        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
         .disabled(viewModel.isLoading)
         .padding(.top, 14)
     }
-
+    
     private var actions: some View {
         HStack { Spacer(); Text("¿Olvidaste tu contraseña?").foregroundStyle(.secondary) }
     }
@@ -156,14 +170,26 @@ private extension View {
             .background(
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
                     .fill(Color(.secondarySystemBackground))
-                    .glassify()
+                    // // Aquí aplicamos el glass al fondo
+                    .applyGlassBackground()
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .strokeBorder(.quaternary, lineWidth: 1)
+                    .strokeBorder(.white.opacity(0.18), lineWidth: 1)
             )
     }
 
+    @ViewBuilder
+       func applyGlassBackground() -> some View {
+           if #available(iOS 26.0, *) {
+               self.glassEffect()
+           } else {
+               self
+                   .background(.ultraThinMaterial)
+                   .shadow(color: .black.opacity(0.08), radius: 16, x: 0, y: 10)
+           }
+       }
+    
     @ViewBuilder
     func glassify() -> some View {
         // // Glass effect solo si está disponible
