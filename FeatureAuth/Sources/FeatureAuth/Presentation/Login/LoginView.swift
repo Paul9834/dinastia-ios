@@ -1,14 +1,20 @@
 import SwiftUI
 
 public struct LoginView: View {
-    // // El dueño real del VM es AuthFlow, aquí solo lo observamos
+
+    @FocusState private var focusedField: Field?
+
+    private enum Field: Hashable {
+        case email
+        case password
+    }
+
     @ObservedObject private var viewModel: LoginViewModel
 
     @State private var isPasswordVisible = false
     private let brandGreen = Color(red: 0.22, green: 0.47, blue: 0.28)
 
     public init(viewModel: LoginViewModel) {
-        // // Guardamos la referencia al VM que nos inyectan
         self.viewModel = viewModel
     }
 
@@ -27,8 +33,10 @@ public struct LoginView: View {
                 .padding(.top, 16)
             }
             .scrollIndicators(.hidden)
+            .scrollDismissesKeyboard(.interactively)
             .background(background)
         }
+        .onAppear { focusedField = .email }
     }
 
     private var hero: some View {
@@ -59,38 +67,59 @@ public struct LoginView: View {
 
     private var fields: some View {
         VStack(spacing: 16) {
-            HStack(spacing: 12) {
-                Image(systemName: "envelope.fill").foregroundStyle(.secondary)
+
+            HStack(alignment: .center, spacing: 12) {
+                Image(systemName: "envelope.fill")
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundStyle(.secondary)
 
                 TextField("Correo electrónico*", text: $viewModel.email)
+                    .font(.system(size: 17))
+                    .padding(.vertical, 14)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
                     .keyboardType(.emailAddress)
                     .submitLabel(.next)
+                    .focused($focusedField, equals: .email)
+                    .onSubmit { focusedField = .password }
             }
-            .fieldPill()
+            .fieldPill(isFocused: focusedField == .email)
 
-            HStack(spacing: 12) {
-                Image(systemName: "lock.fill").foregroundStyle(.secondary)
+            HStack(alignment: .center, spacing: 12) {
+                Image(systemName: "lock.fill")
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundStyle(.secondary)
 
                 if isPasswordVisible {
                     TextField("Contraseña*", text: $viewModel.password)
+                        .font(.system(size: 17))
+                        .padding(.vertical, 14)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
+                        .submitLabel(.go)
+                        .focused($focusedField, equals: .password)
+                        .onSubmit { submitLogin() }
                 } else {
                     SecureField("Contraseña*", text: $viewModel.password)
+                        .font(.system(size: 17))
+                        .padding(.vertical, 14)
+                        .submitLabel(.go)
+                        .focused($focusedField, equals: .password)
+                        .onSubmit { submitLogin() }
                 }
 
                 Button {
-                    // // Toggle para ver/ocultar contraseña
                     isPasswordVisible.toggle()
                 } label: {
                     Image(systemName: isPasswordVisible ? "eye" : "eye.slash")
+                        .font(.system(size: 17, weight: .semibold))
                         .foregroundStyle(.secondary)
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
             }
-            .fieldPill()
+            .fieldPill(isFocused: focusedField == .password)
 
             if let msg = viewModel.errorMessage {
                 Text(msg)
@@ -102,47 +131,43 @@ public struct LoginView: View {
         .padding(.top, 10)
     }
 
+    private func submitLogin() {
+        guard !viewModel.isLoading else { return }
+        focusedField = nil
+        Task { await viewModel.loginTapped() }
+    }
+
     private var primaryButton: some View {
         Button {
-            // // Dispara el login en async
-            Task { await viewModel.loginTapped() }
+            submitLogin()
         } label: {
-            // // HStack para asegurar ancho completo y área tocable grande
-            HStack {
-                Spacer()
+            ZStack {
+                Text("INGRESAR")
+                    .font(.system(size: 18, weight: .bold))
+                    .opacity(viewModel.isLoading ? 0 : 1)
 
-                ZStack {
-                    // // Texto del botón
-                    Text("INGRESAR")
-                        .font(.system(size: 18, weight: .bold))
-                        .opacity(viewModel.isLoading ? 0 : 1)
-
-                    // // Loader encima cuando está cargando
-                    if viewModel.isLoading {
-                        ProgressView()
-                            .tint(.white)
-                    }
+                if viewModel.isLoading {
+                    ProgressView()
+                        .tint(.white)
                 }
-
-                Spacer()
             }
-            .padding(.vertical, 18)
             .frame(maxWidth: .infinity)
-            // // Define la forma tocable (hitbox) del botón
-            .contentShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-            // // Estilo visual del botón (adentro del label para que sea tocable)
+            .padding(.vertical, 18)
             .background(brandGreen)
             .foregroundStyle(.white)
             .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-            .shadow(color: brandGreen.opacity(0.25), radius: 18, x: 0, y: 10)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .disabled(viewModel.isLoading)
         .padding(.top, 14)
     }
-    
+
     private var actions: some View {
-        HStack { Spacer(); Text("¿Olvidaste tu contraseña?").foregroundStyle(.secondary) }
+        HStack {
+            Text("¿Olvidaste tu contraseña?")
+                .foregroundStyle(.secondary)
+        }
     }
 
     private var footer: some View {
@@ -162,37 +187,35 @@ public struct LoginView: View {
 }
 
 private extension View {
-    func fieldPill() -> some View {
+
+    func fieldPill(isFocused: Bool) -> some View {
         self
+            .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
             .padding(.horizontal, 18)
-            .padding(.vertical, 16)
-            .frame(maxWidth: .infinity)
             .background(
-                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
                     .fill(Color(.secondarySystemBackground))
-                    // // Aquí aplicamos el glass al fondo
                     .applyGlassBackground()
             )
             .overlay(
-                RoundedRectangle(cornerRadius: 22, style: .continuous)
-                    .strokeBorder(.white.opacity(0.18), lineWidth: 1)
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .strokeBorder(isFocused ? Color.white.opacity(0.28) : Color.white.opacity(0.14), lineWidth: 1)
             )
     }
 
     @ViewBuilder
-       func applyGlassBackground() -> some View {
-           if #available(iOS 26.0, *) {
-               self.glassEffect()
-           } else {
-               self
-                   .background(.ultraThinMaterial)
-                   .shadow(color: .black.opacity(0.08), radius: 16, x: 0, y: 10)
-           }
-       }
-    
+    func applyGlassBackground() -> some View {
+        if #available(iOS 26.0, *) {
+            self.glassEffect()
+        } else {
+            self
+                .background(.ultraThinMaterial)
+                .shadow(color: .black.opacity(0.08), radius: 16, x: 0, y: 10)
+        }
+    }
+
     @ViewBuilder
     func glassify() -> some View {
-        // // Glass effect solo si está disponible
         if #available(iOS 26.0, *) { self.glassEffect() } else { self }
     }
 }

@@ -1,26 +1,33 @@
 import SwiftUI
 import AppContainer
-import FeatureAuth
+import CorePersistence
 
 public struct AuthFlow: View {
+    // // Callback para avisar que ya se autenticó
     private let onAuthed: @MainActor () -> Void
 
-    public init(onAuthed: @escaping @MainActor () -> Void) {
-        self.onAuthed = onAuthed
-    }
+    // // El ViewModel debe vivir mientras viva el AuthFlow
+    @StateObject private var viewModel: LoginViewModel
 
-    public var body: some View {
+    public init(onAuthed: @escaping @MainActor () -> Void) {
+        // // Guardamos callback
+        self.onAuthed = onAuthed
+
         // // Traemos dependencias del contenedor
         let container = AppContainer.shared
 
-        // // Creamos el ViewModel inyectando AuthAPI + TokenStore + callback
-        let vm = LoginViewModel(
-            authAPI: container.authAPI,
-            tokenStore: container.tokenStore,
-            onAuthed: onAuthed
+        // // Creamos el VM una sola vez (StateObject)
+        _viewModel = StateObject(
+            wrappedValue: LoginViewModel(
+                authAPI: container.authAPI,
+                tokenStore: container.tokenStore,
+                onAuthed: onAuthed
+            )
         )
+    }
 
-        // // Montamos el LoginView real
-        LoginView(viewModel: vm)
+    public var body: some View {
+        // // Montamos el login con el VM “estable”
+        LoginView(viewModel: viewModel)
     }
 }

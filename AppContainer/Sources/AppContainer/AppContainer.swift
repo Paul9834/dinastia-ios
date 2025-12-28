@@ -2,6 +2,7 @@ import Foundation
 import CoreNetworking
 import CorePersistence
 
+
 @MainActor
 public final class AppContainer {
     @MainActor public static let shared = AppContainer()
