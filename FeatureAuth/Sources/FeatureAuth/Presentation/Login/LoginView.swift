@@ -1,15 +1,15 @@
 import SwiftUI
 
 public struct LoginView: View {
-    // // ViewModel dueño del estado
-    @StateObject private var viewModel: LoginViewModel
+    // // El dueño real del VM es AuthFlow, aquí solo lo observamos
+    @ObservedObject private var viewModel: LoginViewModel
 
     @State private var isPasswordVisible = false
     private let brandGreen = Color(red: 0.22, green: 0.47, blue: 0.28)
 
-    // // Inyección desde afuera (AuthFlow)
     public init(viewModel: LoginViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        // // Guardamos la referencia al VM que nos inyectan
+        self.viewModel = viewModel
     }
 
     public var body: some View {
@@ -82,6 +82,7 @@ public struct LoginView: View {
                 }
 
                 Button {
+                    // // Toggle para ver/ocultar contraseña
                     isPasswordVisible.toggle()
                 } label: {
                     Image(systemName: isPasswordVisible ? "eye" : "eye.slash")
@@ -103,6 +104,7 @@ public struct LoginView: View {
 
     private var primaryButton: some View {
         Button {
+            // // Dispara el login en async
             Task { await viewModel.loginTapped() }
         } label: {
             ZStack {
@@ -125,12 +127,23 @@ public struct LoginView: View {
         .padding(.top, 14)
     }
 
-    private var actions: some View { HStack { Spacer(); Text("¿Olvidaste tu contraseña?").foregroundStyle(.secondary) } }
-    private var footer: some View { Text("¿No tienes cuenta? Regístrate").foregroundStyle(.secondary).padding(.top, 10) }
+    private var actions: some View {
+        HStack { Spacer(); Text("¿Olvidaste tu contraseña?").foregroundStyle(.secondary) }
+    }
+
+    private var footer: some View {
+        Text("¿No tienes cuenta? Regístrate")
+            .foregroundStyle(.secondary)
+            .padding(.top, 10)
+    }
 
     private var background: some View {
-        LinearGradient(colors: [brandGreen.opacity(0.05), Color(.systemBackground)], startPoint: .top, endPoint: .bottom)
-            .ignoresSafeArea()
+        LinearGradient(
+            colors: [brandGreen.opacity(0.05), Color(.systemBackground)],
+            startPoint: .top,
+            endPoint: .bottom
+        )
+        .ignoresSafeArea()
     }
 }
 
@@ -140,12 +153,20 @@ private extension View {
             .padding(.horizontal, 18)
             .padding(.vertical, 16)
             .frame(maxWidth: .infinity)
-            .background(RoundedRectangle(cornerRadius: 22, style: .continuous).fill(Color(.secondarySystemBackground)).glassify())
-            .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).strokeBorder(.quaternary, lineWidth: 1))
+            .background(
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .fill(Color(.secondarySystemBackground))
+                    .glassify()
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .strokeBorder(.quaternary, lineWidth: 1)
+            )
     }
 
     @ViewBuilder
     func glassify() -> some View {
+        // // Glass effect solo si está disponible
         if #available(iOS 26.0, *) { self.glassEffect() } else { self }
     }
 }

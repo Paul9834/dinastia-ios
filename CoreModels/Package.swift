@@ -4,17 +4,15 @@ import PackageDescription
 let package = Package(
     name: "CoreModels",
     platforms: [
-        // // Mínimo iOS para compilar el paquete (puedes subirlo si quieres)
+        // // CoreModels exige iOS 17
         .iOS(.v17)
     ],
     products: [
-        // // Librería que otros módulos pueden importar: import CoreModels
+        // // Librería que otros módulos importan: import CoreModels
         .library(name: "CoreModels", targets: ["CoreModels"])
     ],
     targets: [
-        // // Target principal del paquete
-        .target(
-            name: "CoreModels"
-        )
+        // // Target principal del package
+        .target(name: "CoreModels")
     ]
 )

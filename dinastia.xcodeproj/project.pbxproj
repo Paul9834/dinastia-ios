@@ -7,13 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A067E5242F00868F0057A742 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A067E5232F00868F0057A742 /* CoreNetworking */; };
-		A067E5272F00869D0057A742 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A067E5262F00869D0057A742 /* CorePersistence */; };
-		A067E52A2F0086A60057A742 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A067E5292F0086A60057A742 /* CoreFoundationKit */; };
-		A067E52D2F0086B00057A742 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A067E52C2F0086B00057A742 /* DesignSystem */; };
-		A067E5302F0086C00057A742 /* AppContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A067E52F2F0086C00057A742 /* AppContainer */; };
-		A0AFC1432F00B1B500CD9B30 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0AFC1422F00B1B500CD9B30 /* CoreNetworking */; };
-		A0DAD7E12F008A2600E13B1D /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A0DAD7E02F008A2600E13B1D /* FeatureAuth */; };
+		A07136C82F00C7F000AA8D49 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D402F00B91700E5E9A4 /* DesignSystem */; };
+		A07136C92F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D432F00B92E00E5E9A4 /* CoreFoundationKit */; };
+		A07136CA2F00C7F000AA8D49 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D462F00B93700E5E9A4 /* CorePersistence */; };
+		A07136CB2F00C7F000AA8D49 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D492F00B94400E5E9A4 /* CoreNetworking */; };
+		A07136CC2F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D4C2F00B95400E5E9A4 /* CoreFoundationKit */; };
+		A07136CD2F00C7F000AA8D49 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D4F2F00B96300E5E9A4 /* CorePersistence */; };
+		A07136CE2F00C7F000AA8D49 /* CoreModels in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D532F00B98300E5E9A4 /* CoreModels */; };
+		A07136CF2F00C7F000AA8D49 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D5D2F00BA6900E5E9A4 /* CorePersistence */; };
+		A07136D02F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D602F00BA6F00E5E9A4 /* CoreFoundationKit */; };
+		A07136D12F00C7F000AA8D49 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D632F00BA7400E5E9A4 /* FeatureAuth */; };
+		A07136D22F00C7F000AA8D49 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D662F00BA9500E5E9A4 /* CoreNetworking */; };
+		A0EB3D3D2F00B8D800E5E9A4 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D3C2F00B8D800E5E9A4 /* FeatureAuth */; };
+		A0EB3D572F00B9B300E5E9A4 /* CoreModels in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D562F00B9B300E5E9A4 /* CoreModels */; };
+		A0EB3D5B2F00BA3F00E5E9A4 /* AppContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D5A2F00BA3F00E5E9A4 /* AppContainer */; };
+		A0EB3D6A2F00BA9E00E5E9A4 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D692F00BA9E00E5E9A4 /* DesignSystem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,13 +55,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A067E52D2F0086B00057A742 /* DesignSystem in Frameworks */,
-				A0DAD7E12F008A2600E13B1D /* FeatureAuth in Frameworks */,
-				A0AFC1432F00B1B500CD9B30 /* CoreNetworking in Frameworks */,
-				A067E52A2F0086A60057A742 /* CoreFoundationKit in Frameworks */,
-				A067E5242F00868F0057A742 /* CoreNetworking in Frameworks */,
-				A067E5302F0086C00057A742 /* AppContainer in Frameworks */,
-				A067E5272F00869D0057A742 /* CorePersistence in Frameworks */,
+				A07136D22F00C7F000AA8D49 /* CoreNetworking in Frameworks */,
+				A07136D12F00C7F000AA8D49 /* FeatureAuth in Frameworks */,
+				A07136D02F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */,
+				A07136CF2F00C7F000AA8D49 /* CorePersistence in Frameworks */,
+				A07136CE2F00C7F000AA8D49 /* CoreModels in Frameworks */,
+				A07136CD2F00C7F000AA8D49 /* CorePersistence in Frameworks */,
+				A07136CC2F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */,
+				A07136CB2F00C7F000AA8D49 /* CoreNetworking in Frameworks */,
+				A07136CA2F00C7F000AA8D49 /* CorePersistence in Frameworks */,
+				A07136C92F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */,
+				A07136C82F00C7F000AA8D49 /* DesignSystem in Frameworks */,
+				A0EB3D6A2F00BA9E00E5E9A4 /* DesignSystem in Frameworks */,
+				A0EB3D3D2F00B8D800E5E9A4 /* FeatureAuth in Frameworks */,
+				A0EB3D572F00B9B300E5E9A4 /* CoreModels in Frameworks */,
+				A0EB3D5B2F00BA3F00E5E9A4 /* AppContainer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,13 +120,21 @@
 			);
 			name = dinastia;
 			packageProductDependencies = (
-				A067E5232F00868F0057A742 /* CoreNetworking */,
-				A067E5262F00869D0057A742 /* CorePersistence */,
-				A067E5292F0086A60057A742 /* CoreFoundationKit */,
-				A067E52C2F0086B00057A742 /* DesignSystem */,
-				A067E52F2F0086C00057A742 /* AppContainer */,
-				A0DAD7E02F008A2600E13B1D /* FeatureAuth */,
-				A0AFC1422F00B1B500CD9B30 /* CoreNetworking */,
+				A0EB3D3C2F00B8D800E5E9A4 /* FeatureAuth */,
+				A0EB3D402F00B91700E5E9A4 /* DesignSystem */,
+				A0EB3D432F00B92E00E5E9A4 /* CoreFoundationKit */,
+				A0EB3D462F00B93700E5E9A4 /* CorePersistence */,
+				A0EB3D492F00B94400E5E9A4 /* CoreNetworking */,
+				A0EB3D4C2F00B95400E5E9A4 /* CoreFoundationKit */,
+				A0EB3D4F2F00B96300E5E9A4 /* CorePersistence */,
+				A0EB3D532F00B98300E5E9A4 /* CoreModels */,
+				A0EB3D562F00B9B300E5E9A4 /* CoreModels */,
+				A0EB3D5A2F00BA3F00E5E9A4 /* AppContainer */,
+				A0EB3D5D2F00BA6900E5E9A4 /* CorePersistence */,
+				A0EB3D602F00BA6F00E5E9A4 /* CoreFoundationKit */,
+				A0EB3D632F00BA7400E5E9A4 /* FeatureAuth */,
+				A0EB3D662F00BA9500E5E9A4 /* CoreNetworking */,
+				A0EB3D692F00BA9E00E5E9A4 /* DesignSystem */,
 			);
 			productName = dinastia;
 			productReference = A0BF93B82EFE17D500A17360 /* dinastia.app */;
@@ -141,13 +165,13 @@
 			mainGroup = A0BF93AF2EFE17D500A17360;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				A067E5222F00868F0057A742 /* XCLocalSwiftPackageReference "CoreNetworking" */,
-				A067E5252F00869D0057A742 /* XCLocalSwiftPackageReference "CorePersistence" */,
-				A067E5282F0086A60057A742 /* XCLocalSwiftPackageReference "CoreFoundationKit" */,
-				A067E52B2F0086B00057A742 /* XCLocalSwiftPackageReference "DesignSystem" */,
-				A067E52E2F0086C00057A742 /* XCLocalSwiftPackageReference "AppContainer" */,
-				A0DAD7DF2F008A2600E13B1D /* XCLocalSwiftPackageReference "FeatureAuth" */,
-				A0ECBE352F00B45F00E0E3B2 /* XCLocalSwiftPackageReference "CoreModels" */,
+				A0EB3D552F00B9B300E5E9A4 /* XCLocalSwiftPackageReference "CoreModels" */,
+				A0EB3D592F00BA3F00E5E9A4 /* XCLocalSwiftPackageReference "AppContainer" */,
+				A0EB3D5C2F00BA6900E5E9A4 /* XCLocalSwiftPackageReference "CorePersistence" */,
+				A0EB3D5F2F00BA6F00E5E9A4 /* XCLocalSwiftPackageReference "CoreFoundationKit" */,
+				A0EB3D622F00BA7400E5E9A4 /* XCLocalSwiftPackageReference "FeatureAuth" */,
+				A0EB3D652F00BA9500E5E9A4 /* XCLocalSwiftPackageReference "CoreNetworking" */,
+				A0EB3D682F00BA9E00E5E9A4 /* XCLocalSwiftPackageReference "DesignSystem" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A0BF93B92EFE17D500A17360 /* Products */;
@@ -233,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -291,7 +315,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -318,6 +342,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -352,6 +377,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -393,64 +419,96 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		A067E5222F00868F0057A742 /* XCLocalSwiftPackageReference "CoreNetworking" */ = {
+		A0EB3D552F00B9B300E5E9A4 /* XCLocalSwiftPackageReference "CoreModels" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = CoreNetworking;
+			relativePath = CoreModels;
 		};
-		A067E5252F00869D0057A742 /* XCLocalSwiftPackageReference "CorePersistence" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = CorePersistence;
-		};
-		A067E5282F0086A60057A742 /* XCLocalSwiftPackageReference "CoreFoundationKit" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = CoreFoundationKit;
-		};
-		A067E52B2F0086B00057A742 /* XCLocalSwiftPackageReference "DesignSystem" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = DesignSystem;
-		};
-		A067E52E2F0086C00057A742 /* XCLocalSwiftPackageReference "AppContainer" */ = {
+		A0EB3D592F00BA3F00E5E9A4 /* XCLocalSwiftPackageReference "AppContainer" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = AppContainer;
 		};
-		A0DAD7DF2F008A2600E13B1D /* XCLocalSwiftPackageReference "FeatureAuth" */ = {
+		A0EB3D5C2F00BA6900E5E9A4 /* XCLocalSwiftPackageReference "CorePersistence" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = CorePersistence;
+		};
+		A0EB3D5F2F00BA6F00E5E9A4 /* XCLocalSwiftPackageReference "CoreFoundationKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = CoreFoundationKit;
+		};
+		A0EB3D622F00BA7400E5E9A4 /* XCLocalSwiftPackageReference "FeatureAuth" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = FeatureAuth;
 		};
-		A0ECBE352F00B45F00E0E3B2 /* XCLocalSwiftPackageReference "CoreModels" */ = {
+		A0EB3D652F00BA9500E5E9A4 /* XCLocalSwiftPackageReference "CoreNetworking" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = CoreModels;
+			relativePath = CoreNetworking;
+		};
+		A0EB3D682F00BA9E00E5E9A4 /* XCLocalSwiftPackageReference "DesignSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = DesignSystem;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A067E5232F00868F0057A742 /* CoreNetworking */ = {
+		A0EB3D3C2F00B8D800E5E9A4 /* FeatureAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = CoreNetworking;
+			productName = FeatureAuth;
 		};
-		A067E5262F00869D0057A742 /* CorePersistence */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CorePersistence;
-		};
-		A067E5292F0086A60057A742 /* CoreFoundationKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CoreFoundationKit;
-		};
-		A067E52C2F0086B00057A742 /* DesignSystem */ = {
+		A0EB3D402F00B91700E5E9A4 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DesignSystem;
 		};
-		A067E52F2F0086C00057A742 /* AppContainer */ = {
+		A0EB3D432F00B92E00E5E9A4 /* CoreFoundationKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = AppContainer;
+			productName = CoreFoundationKit;
 		};
-		A0AFC1422F00B1B500CD9B30 /* CoreNetworking */ = {
+		A0EB3D462F00B93700E5E9A4 /* CorePersistence */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CorePersistence;
+		};
+		A0EB3D492F00B94400E5E9A4 /* CoreNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreNetworking;
 		};
-		A0DAD7E02F008A2600E13B1D /* FeatureAuth */ = {
+		A0EB3D4C2F00B95400E5E9A4 /* CoreFoundationKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreFoundationKit;
+		};
+		A0EB3D4F2F00B96300E5E9A4 /* CorePersistence */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CorePersistence;
+		};
+		A0EB3D532F00B98300E5E9A4 /* CoreModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreModels;
+		};
+		A0EB3D562F00B9B300E5E9A4 /* CoreModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreModels;
+		};
+		A0EB3D5A2F00BA3F00E5E9A4 /* AppContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppContainer;
+		};
+		A0EB3D5D2F00BA6900E5E9A4 /* CorePersistence */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CorePersistence;
+		};
+		A0EB3D602F00BA6F00E5E9A4 /* CoreFoundationKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreFoundationKit;
+		};
+		A0EB3D632F00BA7400E5E9A4 /* FeatureAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureAuth;
+		};
+		A0EB3D662F00BA9500E5E9A4 /* CoreNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreNetworking;
+		};
+		A0EB3D692F00BA9E00E5E9A4 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

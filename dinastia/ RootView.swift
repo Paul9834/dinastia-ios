@@ -3,6 +3,7 @@ import FeatureAuth
 import AppContainer
 import CorePersistence
 
+
 struct RootView: View {
     // // Ruta actual de la app (auth o main)
     @State private var route: AppRoute = .auth
@@ -10,10 +11,8 @@ struct RootView: View {
     var body: some View {
         switch route {
         case .auth:
-            // // Inyectamos authAPI y tokenStore desde el contenedor global
+            // // AuthFlow ya trae authAPI y tokenStore desde AppContainer.shared
             AuthFlow(
-                authAPI: AppContainer.shared.authAPI,
-                tokenStore: AppContainer.shared.tokenStore,
                 onAuthed: { route = .main } // // Cambiamos a main cuando el login sea exitoso
             )
 

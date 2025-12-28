@@ -2,6 +2,7 @@ import Foundation
 import CoreModels
 import CoreNetworking
 import CorePersistence
+import CoreFoundationKit
 
 @MainActor
 public final class LoginViewModel: ObservableObject {
@@ -45,15 +46,31 @@ public final class LoginViewModel: ObservableObject {
         // // Loading ON
         isLoading = true
         defer { isLoading = false }
+        
+        Log.d("LoginTapped email=\(e)")
+
 
         do {
-            // // Llamado a login
-            let response = try await authAPI.login(.init(correo: e, contrasena: p))
+            // // Capturamos dependencia para mandarla a un Task fuera del MainActor
+            let api = authAPI
 
-            // // Guardar token en Keychain
+            // // Request fuera del MainActor (evita warnings y mantiene UI limpia)
+            let response = try await Task.detached(priority: .userInitiated) {
+                try await api.login(.init(correo: e, contrasena: p))
+            }.value
+            
+            let responsee = try await authAPI.login(.init(correo: e, contrasena: p))
+
+            // // Guardar token (aquí en MainActor está perfecto)
             try tokenStore.save(response.token)
+            
+            let tokenPreview = String(response.token.prefix(12))
+            Log.d("Token recibido: \(tokenPreview)… len=\(response.token.count)")
+            
+            let stored = try tokenStore.load()
+            Log.d("Token en Keychain: \(String((stored ?? "").prefix(12)))…")
 
-            // // Notificar éxito (cambio de flujo)
+            // // Notificar éxito
             onAuthed()
         } catch {
             errorMessage = "No se pudo iniciar sesión. Verifica tus datos e intenta de nuevo."
