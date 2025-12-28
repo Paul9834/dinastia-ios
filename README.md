@@ -1,56 +1,58 @@
-Dinastía iOS — README GENERAL (lo que hicimos hoy + arquitectura actual)
+# Dinastía iOS — README (Arquitectura + lo que hicimos hoy)
 
-============================================================
-0) Resultado de hoy (en una frase)
-============================================================
-Dejamos el proyecto funcionando con login real y una arquitectura modular (SPM) con MVVM + DI (AppContainer).
-También resolvimos problemas de Swift tools version, platform versions y productos faltantes en el grafo de paquetes.
-El token se recibe del backend y se guarda en Keychain (CorePersistence).
+> Objetivo del día: dejar **login real funcionando**, con una base **profesional y escalable** para seguir construyendo features sin romper todo a futuro.
 
-============================================================
-1) Arquitectura que quedó (visión general)
-============================================================
+---
 
-Capas / responsabilidades
+## ✅ Resultado de hoy (en una frase)
+Montamos una arquitectura **SPM modular + MVVM + DI (AppContainer)**, arreglamos problemas de **Swift tools / platform versions / products**, y dejamos **login + token en Keychain** funcionando.
 
-- App (Target dinastia)
-  - Decide el flujo (Auth vs Main) y la navegación.
+---
+
+## 1) Arquitectura que quedó (visión general)
+
+### Capas / responsabilidades
+
+- **App (Target `dinastia`)**
+  - Decide el flujo principal (Auth vs Main) y la navegación.
   - No debe contener lógica de negocio.
 
-- FeatureAuth
-  - UI de login (LoginView)
-  - Estado/lógica de pantalla (LoginViewModel)
-  - Orquestador del feature (AuthFlow)
+- **FeatureAuth**
+  - UI de login: `LoginView`
+  - Lógica/estado de pantalla: `LoginViewModel`
+  - Orquestación del feature: `AuthFlow`
 
-- AppContainer (DI / “Dependency Injection”)
-  - Fábrica/registro de dependencias compartidas.
-  - Expone authAPI, tokenStore, apiClient, config, etc.
-  - Centraliza la creación de objetos para que las Features no construyan infraestructura.
+- **AppContainer (DI / Dependency Injection)**
+  - “Fábrica” de dependencias compartidas.
+  - Expone: `apiClient`, `authAPI`, `tokenStore`, `AppConfig`.
+  - Evita que cada feature cree infraestructura por su cuenta.
 
-- CoreNetworking
-  - Cliente HTTP (APIClient)
-  - Endpoint + HTTPMethod + NetworkError
-  - Implementación de AuthAPI/AuthAPIProtocol
-  - Decodificación JSON y manejo de respuestas
+- **CoreNetworking**
+  - HTTP client: `APIClient`
+  - Modelos de request: `Endpoint`, `HTTPMethod`
+  - Errores: `NetworkError`
+  - Implementación auth: `AuthAPI` / `AuthAPIProtocol`
 
-- CoreModels
-  - DTOs compartidos (LoginRequest/LoginResponse, RegisterRequest/RegisterResponse, etc.)
-  - Son “modelos de transporte” (lo que viaja por red).
+- **CoreModels**
+  - DTOs (data transfer objects) compartidos:
+    - `LoginRequest`, `LoginResponse`
+    - `RegisterRequest`, `RegisterResponse`
 
-- CorePersistence
-  - TokenStore (Keychain) para guardar/leer/borrar token
-  - KeychainTokenStore + errores de Keychain
+- **CorePersistence**
+  - Persistencia segura del token:
+    - `TokenStore`
+    - `KeychainTokenStore`
 
-- DesignSystem / CoreFoundationKit
-  - Base UI y helpers para estandarizar estilos/componentes (listo para crecer)
-  - CoreFoundationKit puede alojar utilidades generales compartidas.
+- **DesignSystem / CoreFoundationKit**
+  - Base UI y helpers para estandarizar estilos y utilidades (listo para crecer).
 
-============================================================
-2) Módulos y dependencias (cómo se conectan)
-============================================================
+---
 
-Diagrama mental:
+## 2) Módulos y dependencias (cómo se conectan)
 
+### “Mapa del sistema”
+
+```
 dinastia (App target)
   └── RootView
         ├── AuthFlow (FeatureAuth)
@@ -58,190 +60,160 @@ dinastia (App target)
         │           ├── AuthAPIProtocol (CoreNetworking)
         │           └── TokenStore (CorePersistence)
         └── MainFlow (App)
+```
 
-Cableado real:
+### Cableado real
+`AuthFlow` construye el feature usando dependencias de:
+
+```
 AuthFlow -> AppContainer.shared -> (authAPI, tokenStore)
+```
 
-Esto te permite:
-- Cambiar implementaciones (por ejemplo AuthAPI mock, TokenStore mock) sin tocar la UI.
+**Esto te deja listo para:**
+- Mocks para pruebas (AuthAPI fake, TokenStore fake).
 - Reutilizar infraestructura en más features.
+- Mantener dependencias controladas.
 
-============================================================
-3) Problemas fuertes que resolvimos (y por qué pasaban)
-============================================================
+---
 
-A) Swift tools version vieja (3.1.0)
-----------------------------------
-Síntoma:
-- “package.swift is using Swift tools version 3.1.0 which is no longer supported”
-- Xcode no resolvía CoreModels y cascada de paquetes.
+## 3) Bloqueos grandes que resolvimos hoy (y por qué pasaban)
 
-Arreglo:
-- En TODOS los Package.swift:
-  // swift-tools-version: 6.2
+### A) Swift tools version vieja (3.1.0)
+**Síntoma**
+- `package.swift is using Swift tools version 3.1.0 ...`
 
-B) Platform mismatch (CoreModels iOS 17 vs targets iOS 12)
-----------------------------------------------------------
-Síntoma:
-- “The package product 'CoreModels' requires minimum platform version 17.0 for iOS, but this target supports 12.0”
+**Arreglo**
+- En todos los `Package.swift`:
+  - `// swift-tools-version: 6.2`
 
-Arreglo:
-- Alinear el mínimo iOS a 17 en:
-  1) App target (Build Settings -> iOS Deployment Target)
-  2) TODOS los packages: platforms: [.iOS(.v17)]
+---
 
-C) Missing package product (DesignSystem/FeatureAuth/CoreNetworking/etc.)
-------------------------------------------------------------------------
-Síntoma:
-- “Missing package product 'DesignSystem' ...”
-- “Missing package product 'FeatureAuth' ...”
+### B) Platform mismatch (CoreModels iOS 17 vs app iOS 12)
+**Síntoma**
+- `CoreModels requires minimum iOS 17.0 ... but target supports 12.0`
 
-Causa típica:
-- El Package.swift no exponía product o Xcode quedó con estados viejos.
-- Duplicados o referencias incorrectas en Link Binary With Libraries.
+**Arreglo**
+- Alinear **iOS mínimo = 17** en:
+  - App target (Deployment Target)
+  - **Todos** los packages (SPM):
+    - `platforms: [.iOS(.v17)]`
 
-Arreglo:
-- Asegurar que cada paquete tenga:
-  products: [.library(name: "...", targets: ["..."])]
-- Limpiar duplicados en Build Phases > Link Binary With Libraries
-- Re-resolver paquetes (Xcode lo vuelve a indexar bien después de limpiar)
+---
 
-D) Concurrencia / Data race (MainActor vs networking)
------------------------------------------------------
-Síntoma:
-- Warnings de actor isolation (“Sending main actor-isolated ... risks data races”)
+### C) Missing package product / Packages duplicados
+**Síntoma**
+- `Missing package product 'DesignSystem'` / `FeatureAuth` / etc.
+- Duplicados en Build Phases.
 
-Decisión de hoy:
-- ViewModel y UI en @MainActor (porque actualizan estado de UI)
-- Networking NO amarrado a @MainActor (debe ser background-friendly)
-- El VM llama a networking en Task async y luego actualiza estado (ya está en MainActor).
+**Arreglo**
+- Asegurar `products: [.library(...)]` en cada package.
+- Limpiar duplicados en:
+  - Build Phases → **Link Binary With Libraries**
+- Re-resolver paquetes (Xcode reindex).
 
-============================================================
-4) Flujo de autenticación que quedó funcionando
-============================================================
+---
 
-1) Usuario toca “INGRESAR”
-- LoginView dispara:
-  Task { await viewModel.loginTapped() }
+### D) Concurrencia / Actor isolation (data races)
+**Síntoma**
+- Warnings tipo: “Sending main actor-isolated ... risks data races”
 
-2) ViewModel valida inputs
-- recorta espacios, valida que no estén vacíos
-- prende loading
+**Decisión aplicada**
+- **ViewModel/UI** en `@MainActor` (estado de UI)
+- **Networking** NO amarrado al `@MainActor`
 
-3) ViewModel llama backend
-- authAPI.login(LoginRequest(correo: e, contrasena: p))
+---
 
-4) Recibe token (JWT)
-- ejemplo: “eyJhbGciOiJI…”
-- se imprime log de debug para confirmar
+## 4) Flujo de autenticación que quedó funcionando
 
-5) Guarda token en Keychain
-- tokenStore.save(token)
+1. Usuario toca **INGRESAR**
+2. `LoginView` dispara `Task { await viewModel.loginTapped() }`
+3. `LoginViewModel` valida inputs y prende loading
+4. Llama backend: `authAPI.login(LoginRequest(...))`
+5. Recibe token y lo guarda:
+   - `tokenStore.save(token)` (Keychain)
+6. Llama `onAuthed()` → Root cambia a `.main`
 
-6) Notifica éxito y cambia el flow
-- onAuthed() -> RootView cambia route a .main
+---
 
-============================================================
-5) ¿Qué significa este log?
-============================================================
+## 5) Qué significaba el log del token
+
+Ejemplo:
+```
 LoginTapped email=...
 🟢 Token recibido: eyJhbGciOiJI… len=180
 🟢 Token en Keychain: eyJhbGciOiJI…
+```
 
-Interpretación:
-- Token recibido: el backend respondió un JWT (normal que empiece con “eyJ”)
-- len=180: longitud del token (normal)
-- Token en Keychain: confirmación de que se guardó y se pudo leer
-Conclusión:
-- Login + persistencia quedaron OK.
+- **Token recibido**: backend devolvió un JWT (normal que empiece con `eyJ...`)
+- **len=180**: longitud del token (normal)
+- **Token en Keychain**: confirma guardado y lectura exitosa ✅
 
-============================================================
-6) Estructura actual (lo que ya tienes)
-============================================================
+---
+
+## 6) Lo que ya tienes en el repo (módulos)
 
 Packages locales:
-- AppContainer
-- CoreFoundationKit
-- CoreModels
-- CoreNetworking
-- CorePersistence
-- DesignSystem
-- FeatureAuth
+- `AppContainer`
+- `CoreFoundationKit`
+- `CoreModels`
+- `CoreNetworking`
+- `CorePersistence`
+- `DesignSystem`
+- `FeatureAuth`
 
-Esto es una base “nivel empresa”:
-- escalable
-- testeable
-- fácil de mantener
-- dependencias controladas
+**Conclusión:** base “nivel empresa”, lista para crecer.
 
-============================================================
-7) Lo que debes entender para el futuro (reglas de oro)
-============================================================
+---
 
-Regla #1: Features viven aisladas
-- FeatureX solo depende de Core* + DesignSystem + AppContainer (para inyección)
+## 7) Reglas de oro para el futuro del proyecto
 
-Regla #2: El App target solo enruta
-- RootView/Flows/Navegación, nada de lógica fuerte
+1. **Features aisladas**
+   - FeatureX depende de: `Core*` + `DesignSystem` + `AppContainer`.
 
-Regla #3: Platform mínimo debe estar alineado
-- Si un package sube iOS mínimo, todo el grafo debe alinearse
+2. **App target solo enruta**
+   - RootView/Flows/navegación, no lógica pesada.
 
-Regla #4: Token define sesión
-- Token en Keychain permite:
-  - auto-login
-  - proteger rutas
-  - logout = tokenStore.clear()
+3. **iOS mínimo alineado**
+   - Si subes el mínimo en un package, sube en todo el grafo.
 
-============================================================
-8) Próximos pasos recomendados (orden lógico)
-============================================================
+4. **Token = sesión**
+   - Auto-login si existe token.
+   - Logout = `tokenStore.clear()`.
 
-1) Auto-login
-- En Splash o Root: si tokenStore.load() != nil -> route = .main
+---
 
-2) Logout real
-- Botón logout: tokenStore.clear() + route = .auth
+## 8) Próximos pasos recomendados (orden pro)
 
-3) Authorization header automático
-- En APIClient: si hay token, agregar:
-  Authorization: Bearer <token>
+1. **Auto-login**
+   - En Root/Splash: si `tokenStore.load() != nil` → ruta `.main`
 
-4) FeaturePets (siguiente feature)
-- Repetir patrón: Flow -> View -> ViewModel -> API -> DTOs -> Persistence si aplica
+2. **Logout real**
+   - Botón logout: `tokenStore.clear()` + ruta `.auth`
 
-5) DesignSystem real
-- Extraer componentes UI (fieldPill, botones, colores, spacing, tipografías)
-- Evitar duplicar UI en cada feature
+3. **Authorization header**
+   - Agregar `Authorization: Bearer <token>` automáticamente en requests.
 
-============================================================
-9) Plantilla mental para crear una nueva feature (FeatureX)
-============================================================
+4. **Nuevo feature (ej. Pets)**
+   - Replicar patrón: Flow → View → ViewModel → API → DTOs.
 
-- FeatureXFlow
-  - Crea ViewModel e inyecta dependencias desde AppContainer
+5. **DesignSystem real**
+   - Extraer UI común: botones, inputs, spacing, glass helpers, colores.
 
-- XViewModel (@MainActor)
-  - Estado UI + acciones (tapped), llama APIs y actualiza UI
+---
 
-- XView
-  - UI pura, sin lógica pesada
+## 9) Plantilla mental para crear FeatureX
 
-- CoreNetworking
-  - XAPIProtocol + XAPI
+- `FeatureXFlow`: crea VM con `AppContainer`
+- `XViewModel (@MainActor)`: estado UI + acciones async
+- `XView`: UI pura
+- `XAPIProtocol + XAPI` en `CoreNetworking`
+- `XRequest/XResponse` en `CoreModels`
+- `Stores` en `CorePersistence` si se necesita
 
-- CoreModels
-  - XRequest/XResponse DTOs
+---
 
-- CorePersistence (si necesita storage)
-  - Stores (Keychain, UserDefaults, archivos)
-
-============================================================
-Estado actual
-============================================================
-✅ Login funciona
-✅ Token se guarda en Keychain
-✅ Arquitectura modular lista para crecer
-✅ Packages alineados (tools + iOS mínimo)
-
-FIN
+## ✅ Estado actual
+- ✅ Login funciona
+- ✅ Token guardado en Keychain
+- ✅ Packages alineados (tools + iOS mínimo)
+- ✅ Arquitectura lista para escalar
