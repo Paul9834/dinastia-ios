@@ -3,13 +3,20 @@ import PackageDescription
 
 let package = Package(
     name: "CoreNetworking",
-    platforms: [
-        .iOS(.v17)
-    ],
     products: [
         .library(name: "CoreNetworking", targets: ["CoreNetworking"])
     ],
+    dependencies: [
+        // // Dependencia local al paquete CoreModels
+        .package(path: "../CoreModels")
+    ],
     targets: [
-        .target(name: "CoreNetworking")
+        .target(
+            name: "CoreNetworking",
+            dependencies: [
+                // // Importa el producto CoreModels para poder hacer: import CoreModels
+                .product(name: "CoreModels", package: "CoreModels")
+            ]
+        )
     ]
 )
