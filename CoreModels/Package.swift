@@ -2,22 +2,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "CoreNetworking",
+    name: "CoreModels",
     platforms: [
+        // // Mínimo iOS para compilar el paquete (puedes subirlo si quieres)
         .iOS(.v17)
     ],
     products: [
-        .library(name: "CoreNetworking", targets: ["CoreNetworking"])
-    ],
-    dependencies: [
-        .package(path: "../CoreModels")
+        // // Librería que otros módulos pueden importar: import CoreModels
+        .library(name: "CoreModels", targets: ["CoreModels"])
     ],
     targets: [
+        // // Target principal del paquete
         .target(
-            name: "CoreNetworking",
-            dependencies: [
-                .product(name: "CoreModels", package: "CoreModels")
-            ]
+            name: "CoreModels"
         )
     ]
 )

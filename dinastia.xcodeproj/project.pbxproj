@@ -12,11 +12,11 @@
 		A067E52A2F0086A60057A742 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A067E5292F0086A60057A742 /* CoreFoundationKit */; };
 		A067E52D2F0086B00057A742 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A067E52C2F0086B00057A742 /* DesignSystem */; };
 		A067E5302F0086C00057A742 /* AppContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A067E52F2F0086C00057A742 /* AppContainer */; };
+		A0AFC1432F00B1B500CD9B30 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0AFC1422F00B1B500CD9B30 /* CoreNetworking */; };
 		A0DAD7E12F008A2600E13B1D /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A0DAD7E02F008A2600E13B1D /* FeatureAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A018E6EC2F00853E00B33B2D /* CoreModels */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreModels; sourceTree = "<group>"; };
 		A0BF93B82EFE17D500A17360 /* dinastia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dinastia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -49,6 +49,7 @@
 			files = (
 				A067E52D2F0086B00057A742 /* DesignSystem in Frameworks */,
 				A0DAD7E12F008A2600E13B1D /* FeatureAuth in Frameworks */,
+				A0AFC1432F00B1B500CD9B30 /* CoreNetworking in Frameworks */,
 				A067E52A2F0086A60057A742 /* CoreFoundationKit in Frameworks */,
 				A067E5242F00868F0057A742 /* CoreNetworking in Frameworks */,
 				A067E5302F0086C00057A742 /* AppContainer in Frameworks */,
@@ -62,7 +63,6 @@
 		A018E6EB2F00853E00B33B2D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A018E6EC2F00853E00B33B2D /* CoreModels */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,6 +110,7 @@
 				A067E52C2F0086B00057A742 /* DesignSystem */,
 				A067E52F2F0086C00057A742 /* AppContainer */,
 				A0DAD7E02F008A2600E13B1D /* FeatureAuth */,
+				A0AFC1422F00B1B500CD9B30 /* CoreNetworking */,
 			);
 			productName = dinastia;
 			productReference = A0BF93B82EFE17D500A17360 /* dinastia.app */;
@@ -146,6 +147,7 @@
 				A067E52B2F0086B00057A742 /* XCLocalSwiftPackageReference "DesignSystem" */,
 				A067E52E2F0086C00057A742 /* XCLocalSwiftPackageReference "AppContainer" */,
 				A0DAD7DF2F008A2600E13B1D /* XCLocalSwiftPackageReference "FeatureAuth" */,
+				A0ECBE352F00B45F00E0E3B2 /* XCLocalSwiftPackageReference "CoreModels" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A0BF93B92EFE17D500A17360 /* Products */;
@@ -415,6 +417,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = FeatureAuth;
 		};
+		A0ECBE352F00B45F00E0E3B2 /* XCLocalSwiftPackageReference "CoreModels" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = CoreModels;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -437,6 +443,10 @@
 		A067E52F2F0086C00057A742 /* AppContainer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppContainer;
+		};
+		A0AFC1422F00B1B500CD9B30 /* CoreNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreNetworking;
 		};
 		A0DAD7E02F008A2600E13B1D /* FeatureAuth */ = {
 			isa = XCSwiftPackageProductDependency;
