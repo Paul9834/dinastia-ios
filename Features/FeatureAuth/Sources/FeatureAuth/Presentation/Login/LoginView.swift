@@ -14,28 +14,30 @@ public struct LoginView: View {
     @State private var isPasswordVisible = false
     private let brandGreen = Color(red: 0.22, green: 0.47, blue: 0.28)
 
-    public init(viewModel: LoginViewModel) {
+    
+    private let onGoToRegister: () -> Void
+
+    public init(viewModel: LoginViewModel, onGoToRegister: @escaping () -> Void = {}) {
         self.viewModel = viewModel
+        self.onGoToRegister = onGoToRegister
     }
 
     public var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 22) {
-                    hero
-                    fields
-                    actions
-                    primaryButton
-                    footer
-                    Spacer(minLength: 24)
-                }
-                .padding(.horizontal, 24)
-                .padding(.top, 16)
+        ScrollView {
+            VStack(spacing: 22) {
+                hero
+                fields
+                actions
+                primaryButton
+                footer
+                Spacer(minLength: 24)
             }
-            .scrollIndicators(.hidden)
-            .scrollDismissesKeyboard(.interactively)
-            .background(background)
+            .padding(.horizontal, 24)
+            .padding(.top, 16)
         }
+        .scrollIndicators(.hidden)
+        .scrollDismissesKeyboard(.interactively)
+        .background(background)
         .onAppear { focusedField = .email }
     }
 
@@ -136,6 +138,7 @@ public struct LoginView: View {
         focusedField = nil
         Task { await viewModel.loginTapped() }
     }
+    
 
     private var primaryButton: some View {
         Button {
@@ -171,11 +174,21 @@ public struct LoginView: View {
     }
 
     private var footer: some View {
-        Text("¿No tienes cuenta? Regístrate")
-            .foregroundStyle(.secondary)
-            .padding(.top, 10)
-    }
+        HStack(spacing: 6) {
+            Text("¿No tienes cuenta?")
+                .foregroundStyle(.secondary)
 
+            Button {
+                onGoToRegister()
+            } label: {
+                Text("Regístrate")
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(brandGreen)
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(.top, 10)
+    }
     private var background: some View {
         LinearGradient(
             colors: [brandGreen.opacity(0.05), Color(.systemBackground)],

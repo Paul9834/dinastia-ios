@@ -7,28 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A07136C82F00C7F000AA8D49 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D402F00B91700E5E9A4 /* DesignSystem */; };
-		A07136C92F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D432F00B92E00E5E9A4 /* CoreFoundationKit */; };
-		A07136CA2F00C7F000AA8D49 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D462F00B93700E5E9A4 /* CorePersistence */; };
-		A07136CB2F00C7F000AA8D49 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D492F00B94400E5E9A4 /* CoreNetworking */; };
-		A07136CC2F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D4C2F00B95400E5E9A4 /* CoreFoundationKit */; };
+		A04B08D32F08330C00D26493 /* FeatureRegister in Frameworks */ = {isa = PBXBuildFile; productRef = A04B08D22F08330C00D26493 /* FeatureRegister */; };
 		A07136CD2F00C7F000AA8D49 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D4F2F00B96300E5E9A4 /* CorePersistence */; };
 		A07136CE2F00C7F000AA8D49 /* CoreModels in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D532F00B98300E5E9A4 /* CoreModels */; };
-		A07136CF2F00C7F000AA8D49 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D5D2F00BA6900E5E9A4 /* CorePersistence */; };
 		A07136D02F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D602F00BA6F00E5E9A4 /* CoreFoundationKit */; };
 		A07136D12F00C7F000AA8D49 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D632F00BA7400E5E9A4 /* FeatureAuth */; };
 		A07136D22F00C7F000AA8D49 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D662F00BA9500E5E9A4 /* CoreNetworking */; };
-		A0EB3D3D2F00B8D800E5E9A4 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D3C2F00B8D800E5E9A4 /* FeatureAuth */; };
-		A0EB3D572F00B9B300E5E9A4 /* CoreModels in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D562F00B9B300E5E9A4 /* CoreModels */; };
-		A0EB3D5B2F00BA3F00E5E9A4 /* AppContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D5A2F00BA3F00E5E9A4 /* AppContainer */; };
-		A0EB3D6A2F00BA9E00E5E9A4 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D692F00BA9E00E5E9A4 /* DesignSystem */; };
+		A077B6052F0877E7006FFD15 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D3C2F00B8D800E5E9A4 /* FeatureAuth */; };
+		A077B6062F0877E7006FFD15 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D402F00B91700E5E9A4 /* DesignSystem */; };
+		A077B6072F0877E7006FFD15 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D432F00B92E00E5E9A4 /* CoreFoundationKit */; };
+		A077B6082F0877E7006FFD15 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D462F00B93700E5E9A4 /* CorePersistence */; };
+		A077B6092F0877E7006FFD15 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D492F00B94400E5E9A4 /* CoreNetworking */; };
+		A077B60A2F0877E7006FFD15 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D4C2F00B95400E5E9A4 /* CoreFoundationKit */; };
+		A077B60B2F0877E7006FFD15 /* CoreModels in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D562F00B9B300E5E9A4 /* CoreModels */; };
+		A077B60C2F0877E7006FFD15 /* AppContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D5A2F00BA3F00E5E9A4 /* AppContainer */; };
+		A077B60D2F0877E7006FFD15 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D5D2F00BA6900E5E9A4 /* CorePersistence */; };
+		A077B60E2F0877E7006FFD15 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A0EB3D692F00BA9E00E5E9A4 /* DesignSystem */; };
+		A077B60F2F0877E7006FFD15 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A302F0186250000EDE0 /* CoreFoundationKit */; };
+		A077B6102F0877E7006FFD15 /* CoreModels in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A332F01862D0000EDE0 /* CoreModels */; };
+		A077B6112F0877E7006FFD15 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A392F01863F0000EDE0 /* CoreNetworking */; };
+		A077B6122F0877E7006FFD15 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A3F2F01865A0000EDE0 /* CorePersistence */; };
 		A0FF8A2E2F01861A0000EDE0 /* AppContainer in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A2D2F01861A0000EDE0 /* AppContainer */; };
-		A0FF8A312F0186250000EDE0 /* CoreFoundationKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A302F0186250000EDE0 /* CoreFoundationKit */; };
-		A0FF8A342F01862D0000EDE0 /* CoreModels in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A332F01862D0000EDE0 /* CoreModels */; };
 		A0FF8A372F0186340000EDE0 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A362F0186340000EDE0 /* DesignSystem */; };
-		A0FF8A3A2F01863F0000EDE0 /* CoreNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A392F01863F0000EDE0 /* CoreNetworking */; };
 		A0FF8A3D2F01864E0000EDE0 /* FeatureAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A3C2F01864E0000EDE0 /* FeatureAuth */; };
-		A0FF8A402F01865A0000EDE0 /* CorePersistence in Frameworks */ = {isa = PBXBuildFile; productRef = A0FF8A3F2F01865A0000EDE0 /* CorePersistence */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,28 +63,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A077B6122F0877E7006FFD15 /* CorePersistence in Frameworks */,
+				A077B6112F0877E7006FFD15 /* CoreNetworking in Frameworks */,
+				A077B6102F0877E7006FFD15 /* CoreModels in Frameworks */,
+				A077B60F2F0877E7006FFD15 /* CoreFoundationKit in Frameworks */,
+				A077B60E2F0877E7006FFD15 /* DesignSystem in Frameworks */,
+				A077B60D2F0877E7006FFD15 /* CorePersistence in Frameworks */,
+				A077B60C2F0877E7006FFD15 /* AppContainer in Frameworks */,
+				A077B60B2F0877E7006FFD15 /* CoreModels in Frameworks */,
+				A077B60A2F0877E7006FFD15 /* CoreFoundationKit in Frameworks */,
+				A077B6092F0877E7006FFD15 /* CoreNetworking in Frameworks */,
+				A077B6082F0877E7006FFD15 /* CorePersistence in Frameworks */,
+				A077B6072F0877E7006FFD15 /* CoreFoundationKit in Frameworks */,
+				A077B6062F0877E7006FFD15 /* DesignSystem in Frameworks */,
+				A077B6052F0877E7006FFD15 /* FeatureAuth in Frameworks */,
 				A0FF8A2E2F01861A0000EDE0 /* AppContainer in Frameworks */,
 				A0FF8A3D2F01864E0000EDE0 /* FeatureAuth in Frameworks */,
 				A07136D22F00C7F000AA8D49 /* CoreNetworking in Frameworks */,
 				A07136D12F00C7F000AA8D49 /* FeatureAuth in Frameworks */,
 				A07136D02F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */,
-				A0FF8A402F01865A0000EDE0 /* CorePersistence in Frameworks */,
-				A07136CF2F00C7F000AA8D49 /* CorePersistence in Frameworks */,
 				A0FF8A372F0186340000EDE0 /* DesignSystem in Frameworks */,
+				A04B08D32F08330C00D26493 /* FeatureRegister in Frameworks */,
 				A07136CE2F00C7F000AA8D49 /* CoreModels in Frameworks */,
 				A07136CD2F00C7F000AA8D49 /* CorePersistence in Frameworks */,
-				A07136CC2F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */,
-				A07136CB2F00C7F000AA8D49 /* CoreNetworking in Frameworks */,
-				A0FF8A312F0186250000EDE0 /* CoreFoundationKit in Frameworks */,
-				A07136CA2F00C7F000AA8D49 /* CorePersistence in Frameworks */,
-				A07136C92F00C7F000AA8D49 /* CoreFoundationKit in Frameworks */,
-				A07136C82F00C7F000AA8D49 /* DesignSystem in Frameworks */,
-				A0EB3D6A2F00BA9E00E5E9A4 /* DesignSystem in Frameworks */,
-				A0FF8A3A2F01863F0000EDE0 /* CoreNetworking in Frameworks */,
-				A0EB3D3D2F00B8D800E5E9A4 /* FeatureAuth in Frameworks */,
-				A0FF8A342F01862D0000EDE0 /* CoreModels in Frameworks */,
-				A0EB3D572F00B9B300E5E9A4 /* CoreModels in Frameworks */,
-				A0EB3D5B2F00BA3F00E5E9A4 /* AppContainer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +158,7 @@
 				A0FF8A392F01863F0000EDE0 /* CoreNetworking */,
 				A0FF8A3C2F01864E0000EDE0 /* FeatureAuth */,
 				A0FF8A3F2F01865A0000EDE0 /* CorePersistence */,
+				A04B08D22F08330C00D26493 /* FeatureRegister */,
 			);
 			productName = dinastia;
 			productReference = A0BF93B82EFE17D500A17360 /* dinastia.app */;
@@ -191,8 +194,9 @@
 				A0FF8A322F01862D0000EDE0 /* XCLocalSwiftPackageReference "Core/CoreModels" */,
 				A0FF8A352F0186340000EDE0 /* XCLocalSwiftPackageReference "Core/DesignSystem" */,
 				A0FF8A382F01863F0000EDE0 /* XCLocalSwiftPackageReference "Core/CoreNetworking" */,
-				A0FF8A3B2F01864E0000EDE0 /* XCLocalSwiftPackageReference "Features/FeatureAuth" */,
 				A0FF8A3E2F01865A0000EDE0 /* XCLocalSwiftPackageReference "Core/CorePersistence" */,
+				A04B08CE2F0831C700D26493 /* XCLocalSwiftPackageReference "Features/FeatureAuth" */,
+				A04B08D12F08330C00D26493 /* XCLocalSwiftPackageReference "Features/FeatureRegister" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A0BF93B92EFE17D500A17360 /* Products */;
@@ -440,6 +444,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		A04B08CE2F0831C700D26493 /* XCLocalSwiftPackageReference "Features/FeatureAuth" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Features/FeatureAuth;
+		};
+		A04B08D12F08330C00D26493 /* XCLocalSwiftPackageReference "Features/FeatureRegister" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Features/FeatureRegister;
+		};
 		A0FF8A2C2F01861A0000EDE0 /* XCLocalSwiftPackageReference "Core/AppContainer" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Core/AppContainer;
@@ -460,10 +472,6 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Core/CoreNetworking;
 		};
-		A0FF8A3B2F01864E0000EDE0 /* XCLocalSwiftPackageReference "Features/FeatureAuth" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Features/FeatureAuth;
-		};
 		A0FF8A3E2F01865A0000EDE0 /* XCLocalSwiftPackageReference "Core/CorePersistence" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Core/CorePersistence;
@@ -471,6 +479,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A04B08D22F08330C00D26493 /* FeatureRegister */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FeatureRegister;
+		};
 		A0EB3D3C2F00B8D800E5E9A4 /* FeatureAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureAuth;

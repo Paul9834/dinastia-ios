@@ -1,32 +1,44 @@
 import SwiftUI
 import FeatureAuth
+import FeatureRegister
 import AppContainer
 import CorePersistence
 
-
 struct RootView: View {
-    // // Ruta actual de la app (auth o main)
     @State private var route: AppRoute = .auth
+    @State private var didBootstrap = false
 
     var body: some View {
-        switch route {
-        case .auth:
-            // // AuthFlow ya trae authAPI y tokenStore desde AppContainer.shared
-            AuthFlow(
-                onAuthed: { route = .main } // // Cambiamos a main cuando el login sea exitoso
-            )
+        Group {
+            switch route {
+            case .auth:
+                AuthFlow(
+                    onAuthSuccess: { route = .main },
+                    makeRegister: { onAuthSuccess, onGoToLogin in
+                        RegisterFlow(
+                            onAuthSuccess: onAuthSuccess,
+                            onGoToLogin: onGoToLogin
+                        )
+                    }
+                )
 
-        case .main:
-            // // Al cerrar sesión, borramos token y regresamos a auth
-            MainFlow(onLogout: {
-                try? AppContainer.shared.tokenStore.clear() // // Limpia token (Keychain)
-                route = .auth // // Vuelve al flujo de autenticación
-            })
+            case .main:
+                MainFlow(onLogout: {
+                    try? AppContainer.shared.tokenStore.clear()
+                    route = .auth
+                })
+            }
+        }
+        .task {
+            guard !didBootstrap else { return }
+            didBootstrap = true
+
+            let token = try? AppContainer.shared.tokenStore.load()
+            route = (token?.isEmpty == false) ? .main : .auth
         }
     }
 }
 
-// // Rutas principales de la app
 enum AppRoute {
     case auth
     case main

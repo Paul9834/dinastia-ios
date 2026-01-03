@@ -1,33 +1,42 @@
 import SwiftUI
-import AppContainer
-import CorePersistence
 
-public struct AuthFlow: View {
-    // // Callback para avisar que ya se autenticó
-    private let onAuthed: @MainActor () -> Void
 
-    // // El ViewModel debe vivir mientras viva el AuthFlow
-    @StateObject private var viewModel: LoginViewModel
 
-    public init(onAuthed: @escaping @MainActor () -> Void) {
-        // // Guardamos callback
-        self.onAuthed = onAuthed
+public struct AuthFlow<RegisterScreen: View>: View {
+    private let onAuthSuccess: @MainActor () -> Void
+    private let makeRegister: (
+        @escaping @MainActor () -> Void,
+        @escaping @MainActor () -> Void
+    ) -> RegisterScreen
 
-        // // Traemos dependencias del contenedor
-        let container = AppContainer.shared
+    @State private var path = NavigationPath()
 
-        // // Creamos el VM una sola vez (StateObject)
-        _viewModel = StateObject(
-            wrappedValue: LoginViewModel(
-                authAPI: container.authAPI,
-                tokenStore: container.tokenStore,
-                onAuthed: onAuthed
-            )
-        )
+    public init(
+        onAuthSuccess: @escaping @MainActor () -> Void,
+        makeRegister: @escaping (
+            @escaping @MainActor () -> Void,
+            @escaping @MainActor () -> Void
+        ) -> RegisterScreen
+    ) {
+        self.onAuthSuccess = onAuthSuccess
+        self.makeRegister = makeRegister
     }
 
     public var body: some View {
-        // // Montamos el login con el VM “estable”
-        LoginView(viewModel: viewModel)
+        NavigationStack(path: $path) {
+            LoginFlow(
+                onAuthSuccess: onAuthSuccess,
+                onGoToRegister: { path.append(AuthRoute.register) }
+            )
+            .navigationDestination(for: AuthRoute.self) { route in
+                switch route {
+                case .register:
+                    makeRegister(
+                        onAuthSuccess,
+                        { if !path.isEmpty { path.removeLast() } }
+                    )
+                }
+            }
+        }
     }
 }
