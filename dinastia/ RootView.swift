@@ -3,16 +3,20 @@ import FeatureAuth
 import FeatureRegister
 import AppContainer
 import CorePersistence
-
 struct RootView: View {
 
     // // Estado global simple: o estás en auth o estás en main
     @State private var route: AppRoute = .auth
 
     // // Para que el bootstrap (leer token) corra solo una vez
-    @State private var didBootstrap = false 
+    @State private var didBootstrap = false
+    
+    
+    
 
     var body: some View {
+        
+        
         Group {
             switch route {
 
@@ -45,6 +49,8 @@ struct RootView: View {
                 )
 
             case .main:
+                
+            
                 // // Flujo principal ya autenticado
                 MainFlow(
                     onLogout: {
@@ -63,11 +69,24 @@ struct RootView: View {
 
             let token = try? AppContainer.shared.tokenStore.load()
 
+            debugInfoPlist()
+
+            
             // // Si hay token → arrancamos directo en main.
             // // Si no hay token → mostramos auth.
             route = (token?.isEmpty == false) ? .main : .auth
         }
     }
+    
+    private func debugInfoPlist() {
+            let info = Bundle.main.infoDictionary
+
+            print("✅ BUNDLE:", Bundle.main.bundleIdentifier ?? "nil")
+            print("✅ INFOPLIST FILE KEYS:", info?.keys.sorted() ?? [])
+            print("✅ ATS:", info?["NSAppTransportSecurity"] ?? "NO ATS FOUND")
+        }
+    
+    
 }
 
 enum AppRoute {

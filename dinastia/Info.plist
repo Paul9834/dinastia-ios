@@ -2,14 +2,28 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Fonts provided by application
-Fonts provided by application
-Fonts provided by application</key>
-	<array>
-		<string>Poppins-Regular.ttf</string>
-		<string>Poppins-Medium.ttf</string>
-		<string>Poppins-SemiBold.ttf</string>
-		<string>Poppins-Bold.ttf</string>
-	</array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>190.24.6.141</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+        </dict>
+    </dict>
+
+    <key>UIAppFonts</key>
+    <array>
+        <string>Poppins-Regular.ttf</string>
+        <string>Poppins-Medium.ttf</string>
+        <string>Poppins-SemiBold.ttf</string>
+        <string>Poppins-Bold.ttf</string>
+    </array>
 </dict>
 </plist>
