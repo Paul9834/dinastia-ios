@@ -1,4 +1,5 @@
 import SwiftUI
+import DesignSystem
 
 public struct LoginView: View {
 
@@ -10,11 +11,7 @@ public struct LoginView: View {
     }
 
     @ObservedObject private var viewModel: LoginViewModel
-
     @State private var isPasswordVisible = false
-    private let brandGreen = Color(red: 0.22, green: 0.47, blue: 0.28)
-
-    
     private let onGoToRegister: () -> Void
 
     public init(viewModel: LoginViewModel, onGoToRegister: @escaping () -> Void = {}) {
@@ -24,7 +21,7 @@ public struct LoginView: View {
 
     public var body: some View {
         ScrollView {
-            VStack(spacing: 22) {
+            VStack(spacing: DSSpacing.stack) {
                 hero
                 fields
                 actions
@@ -32,38 +29,42 @@ public struct LoginView: View {
                 footer
                 Spacer(minLength: 24)
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, DSSpacing.screenHorizontal)
             .padding(.top, 16)
         }
         .scrollIndicators(.hidden)
         .scrollDismissesKeyboard(.interactively)
-        .background(background)
+        .background(DSAuthBackground(accent: DSBrand.green))
         .onAppear { focusedField = .email }
     }
 
     private var hero: some View {
         VStack(spacing: 14) {
             ZStack {
-                RoundedRectangle(cornerRadius: 26, style: .continuous)
-                    .fill(brandGreen.opacity(0.12))
+                RoundedRectangle(cornerRadius: DSRadius.iconTile, style: .continuous)
+                    .fill(.thinMaterial)
                     .frame(width: 112, height: 112)
-                    .glassify()
+                    .overlay {
+                        RoundedRectangle(cornerRadius: DSRadius.iconTile, style: .continuous)
+                            .stroke(.white.opacity(0.22), lineWidth: 1)
+                    }
+                    .shadow(color: .black.opacity(0.08), radius: 12, x: 0, y: 8)
 
                 Image(systemName: "pawprint.fill")
                     .font(.system(size: 42, weight: .semibold))
-                    .foregroundStyle(brandGreen)
+                    .foregroundStyle(DSBrand.green)
             }
 
             Text("Bienvenido")
                 .font(.system(size: 44, weight: .bold, design: .rounded))
-                .foregroundStyle(brandGreen)
+                .foregroundStyle(DSBrand.green)
 
             Text("Ingresa a tu cuenta para gestionar tus\nmascotas")
                 .font(.system(size: 18, weight: .regular))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
         }
-        .padding(.top, 26)
+        .padding(.top, DSSpacing.heroTop)
         .padding(.bottom, 10)
     }
 
@@ -84,35 +85,31 @@ public struct LoginView: View {
                     .submitLabel(.next)
                     .focused($focusedField, equals: .email)
                     .onSubmit { focusedField = .password }
+                    .tint(DSBrand.green)
             }
-            .fieldPill(isFocused: focusedField == .email)
+            .padding(.horizontal, DSSpacing.fieldHorizontal)
+            .dsFieldPill(isFocused: focusedField == .email, accent: DSBrand.green)
 
             HStack(alignment: .center, spacing: 12) {
                 Image(systemName: "lock.fill")
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(.secondary)
 
-                if isPasswordVisible {
-                    TextField("Contraseña*", text: $viewModel.password)
-                        .font(.system(size: 17))
-                        .padding(.vertical, 14)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                        .submitLabel(.go)
-                        .focused($focusedField, equals: .password)
-                        .onSubmit { submitLogin() }
-                } else {
-                    SecureField("Contraseña*", text: $viewModel.password)
-                        .font(.system(size: 17))
-                        .padding(.vertical, 14)
-                        .submitLabel(.go)
-                        .focused($focusedField, equals: .password)
-                        .onSubmit { submitLogin() }
+                Group {
+                    if isPasswordVisible {
+                        TextField("Contraseña*", text: $viewModel.password)
+                    } else {
+                        SecureField("Contraseña*", text: $viewModel.password)
+                    }
                 }
+                .font(.system(size: 17))
+                .padding(.vertical, 14)
+                .submitLabel(.go)
+                .focused($focusedField, equals: .password)
+                .onSubmit { submitLogin() }
+                .tint(DSBrand.green)
 
-                Button {
-                    isPasswordVisible.toggle()
-                } label: {
+                Button { isPasswordVisible.toggle() } label: {
                     Image(systemName: isPasswordVisible ? "eye" : "eye.slash")
                         .font(.system(size: 17, weight: .semibold))
                         .foregroundStyle(.secondary)
@@ -121,7 +118,8 @@ public struct LoginView: View {
                 }
                 .buttonStyle(.plain)
             }
-            .fieldPill(isFocused: focusedField == .password)
+            .padding(.horizontal, DSSpacing.fieldHorizontal)
+            .dsFieldPill(isFocused: focusedField == .password, accent: DSBrand.green)
 
             if let msg = viewModel.errorMessage {
                 Text(msg)
@@ -133,39 +131,6 @@ public struct LoginView: View {
         .padding(.top, 10)
     }
 
-    private func submitLogin() {
-        guard !viewModel.isLoading else { return }
-        focusedField = nil
-        Task { await viewModel.loginTapped() }
-    }
-    
-
-    private var primaryButton: some View {
-        Button {
-            submitLogin()
-        } label: {
-            ZStack {
-                Text("INGRESAR")
-                    .font(.system(size: 18, weight: .bold))
-                    .opacity(viewModel.isLoading ? 0 : 1)
-
-                if viewModel.isLoading {
-                    ProgressView()
-                        .tint(.white)
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 18)
-            .background(brandGreen)
-            .foregroundStyle(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .disabled(viewModel.isLoading)
-        .padding(.top, 14)
-    }
-
     private var actions: some View {
         HStack {
             Text("¿Olvidaste tu contraseña?")
@@ -173,62 +138,36 @@ public struct LoginView: View {
         }
     }
 
+    private var primaryButton: some View {
+        DSPrimaryButton(
+            "INGRESAR",
+            isLoading: viewModel.isLoading,
+            isDisabled: viewModel.isLoading,
+            background: DSBrand.green
+        ) {
+            submitLogin()
+        }
+        .padding(.top, 14)
+    }
+
     private var footer: some View {
         HStack(spacing: 6) {
             Text("¿No tienes cuenta?")
                 .foregroundStyle(.secondary)
 
-            Button {
-                onGoToRegister()
-            } label: {
+            Button { onGoToRegister() } label: {
                 Text("Regístrate")
                     .font(.system(size: 16, weight: .semibold))
-                    .foregroundStyle(brandGreen)
+                    .foregroundStyle(DSBrand.green)
             }
             .buttonStyle(.plain)
         }
         .padding(.top, 10)
     }
-    private var background: some View {
-        LinearGradient(
-            colors: [brandGreen.opacity(0.05), Color(.systemBackground)],
-            startPoint: .top,
-            endPoint: .bottom
-        )
-        .ignoresSafeArea()
-    }
-}
 
-private extension View {
-
-    func fieldPill(isFocused: Bool) -> some View {
-        self
-            .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
-            .padding(.horizontal, 18)
-            .background(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(Color(.secondarySystemBackground))
-                    .applyGlassBackground()
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .strokeBorder(isFocused ? Color.white.opacity(0.28) : Color.white.opacity(0.14), lineWidth: 1)
-            )
-    }
-
-    @ViewBuilder
-    func applyGlassBackground() -> some View {
-        if #available(iOS 26.0, *) {
-            self.glassEffect()
-        } else {
-            self
-                .background(.ultraThinMaterial)
-                .shadow(color: .black.opacity(0.08), radius: 16, x: 0, y: 10)
-        }
-    }
-
-    @ViewBuilder
-    func glassify() -> some View {
-        if #available(iOS 26.0, *) { self.glassEffect() } else { self }
+    private func submitLogin() {
+        guard !viewModel.isLoading else { return }
+        focusedField = nil
+        Task { await viewModel.loginTapped() }
     }
 }

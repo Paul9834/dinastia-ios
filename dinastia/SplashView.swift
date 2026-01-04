@@ -23,19 +23,17 @@ struct SplashView: View {
 
             VStack(spacing: 14) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 28, style: .continuous)
-                        .fill(brandGreen.opacity(0.14))
-                        .frame(width: 116, height: 116)
-                        .glassify()
-
-                    Image(systemName: "pawprint.fill")
-                        .font(.system(size: 44, weight: .semibold))
-                        .foregroundStyle(brandGreen)
+                    Image("Pet")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 280, height: 280)  // ajusta a tu gusto
+                    
                 }
 
                 Text("Dinastía")
-                    .font(.system(size: 30, weight: .bold, design: .rounded))
+                    .font(.custom("Poppins-Bold", size: 30))
                     .foregroundStyle(.primary)
+                
             }
             .scaleEffect(scale)
             .opacity(opacity)
